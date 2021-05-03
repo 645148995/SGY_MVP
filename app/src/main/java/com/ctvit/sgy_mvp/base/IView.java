@@ -1,4 +1,4 @@
-package com.ctvit.sgy_mvp;
+package com.ctvit.sgy_mvp.base;
 
 /*
    项目名：SGY_MVP

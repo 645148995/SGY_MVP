@@ -4,9 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 
-import com.ctvit.sgy_mvp.IView;
-import com.ctvit.sgy_mvp.base.BasePersenter;
 
 /*
    项目名：SGY_MVP
@@ -15,7 +15,7 @@ import com.ctvit.sgy_mvp.base.BasePersenter;
    创建时间：2021/5/3 14:29
  */
 public abstract class BaseActivity<P extends BasePersenter> extends AppCompatActivity implements IView {
-    P mPresenter;
+    protected P mPresenter;
 
     protected abstract P createPresenter();
 
@@ -23,11 +23,10 @@ public abstract class BaseActivity<P extends BasePersenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = createPresenter();
-
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-
+        getLifecycle().addObserver(mPresenter);//为Lifecycle注册生命周期监听器
     }
 
     @Override

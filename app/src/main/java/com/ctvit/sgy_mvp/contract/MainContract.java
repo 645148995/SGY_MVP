@@ -1,7 +1,7 @@
 package com.ctvit.sgy_mvp.contract;
 
-import com.ctvit.sgy_mvp.IView;
-import com.ctvit.sgy_mvp.module.IModule;
+import com.ctvit.sgy_mvp.base.IView;
+import com.ctvit.sgy_mvp.base.IModule;
 
 /*
    项目名：SGY_MVP

@@ -1,6 +1,10 @@
 package com.ctvit.sgy_mvp.base;
 
-import com.ctvit.sgy_mvp.IView;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 
 import java.lang.ref.WeakReference;
 
@@ -10,10 +14,15 @@ import java.lang.ref.WeakReference;
    创建者：孙光远
    创建时间：2021/5/3 14:29
  */
-public class BasePersenter<V extends IView> {
+public class BasePersenter<V extends IView> implements IPresenter, LifecycleObserver {
 
 
     private WeakReference<V> viewRef;
+
+    public BasePersenter() {
+
+    }
+
 
     /**
      * 界面创建，Presenter与界面取得联系
@@ -46,5 +55,32 @@ public class BasePersenter<V extends IView> {
             viewRef.clear();
             viewRef = null;
         }
+    }
+
+
+
+    @Override
+    public void onCreate(@NonNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    public void onResume(@NonNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    public void onPause(@NonNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    public void onStop(@NonNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    public void onDestroy(@NonNull LifecycleOwner owner) {
+        this.viewRef = null;
     }
 }
